@@ -1,9 +1,3 @@
-<h3 class="introduction">Given:</h3>
-<h1 class="introduction box-background-color"><code><%= @methods.first["ArrayOfNumbersExample1InputData"] %></code></h1>
-<h2 class="introduction">I WANT AN OUTPUT THAT LOOKS LIKE THIS</h2>
+<%= javascript_pack_tag 'main' %>
 
-<div class="wrapper">
-  <% @methods.each do |element|  %>
-    <div class="box-background-color"><%= element["ArrayOfNumbersExample1OutputData"] %></div>
-  <% end %>
-</div>
+<div id="app"></div>
