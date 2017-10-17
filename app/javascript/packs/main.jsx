@@ -68,6 +68,7 @@ const OutputList = (props) => (
         {props.items.map((item, i) =>
             <div key={i} className="box-background-color">
                 { item.ArrayOfNumbersExample1OutputData }
+                <p style={{fontSize: 12}}> { item.ArrayOfNumbersExample1Explanation } </p>
             </div>
         )}
     </div>
