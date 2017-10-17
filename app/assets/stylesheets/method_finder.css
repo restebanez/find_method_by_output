@@ -1,39 +1,45 @@
+.reactApp {
+    display: flex;
+    flex-flow: row wrap;
+}
 
-.introduction {
+.head, .status-fetch, .output-data-items {
+    flex: 1 100%;
+}
+
+.head {
     text-align: center;
 }
 
-
-
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    grid-gap: 15px;
+.ruby-code {
+    letter-spacing: 2px;
+    background: PaleTurquoise;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-.wrapper {
-    border-radius: 5px;
-}
-
-.wrapper > div {
-    border-radius: 5px;
-    padding: 1em;
-    color: #0d0301;
-}
-
-.wrapper > .box-background-color {
+.output-data-items {
     display: flex;
-    background-color: #d5eeff;
-    padding-bottom: 3px;
-    padding-top: 5px;
-
+    flex-flow: row wrap;
+    padding: 0;
+    margin: 0;
 }
 
-.wrapper > .box-background-color > p {
-    align-self: flex-end;
+.output-data-item {
+
+    background: moccasin;
+    padding: 1px;
+    width: 300px;
+    margin-top: 1px;
+    margin-left: 15px;
+
+    font-weight: bold;
+    text-align: center;
+
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+}
+
+.output-data-item > * {
+    padding: 5px;
+    flex: 1 100%;
 }

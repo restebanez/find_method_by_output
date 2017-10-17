@@ -64,14 +64,14 @@ function fetchMethodExamples(){
 }
 
 const OutputList = (props) => (
-    <div className="wrapper">
+    <main className="output-data-items">
         {props.items.map((item, i) =>
-            <div key={i} className="box-background-color">
-                { item.ArrayOfNumbersExample1OutputData }
-                <p style={{fontSize: 12}}> { item.ArrayOfNumbersExample1Explanation } </p>
-            </div>
+            <ul key={i} className="output-data-item">
+                <li className="output-data-value"> <code className="ruby-code"> { item.ArrayOfNumbersExample1OutputData } </code> </li>
+                <li className="output-data-explanation"> { item.ArrayOfNumbersExample1Explanation } </li>
+            </ul>
         )}
-    </div>
+    </main>
 )
 
 class Ui extends Component {
@@ -92,17 +92,19 @@ class Ui extends Component {
     render(){
         const { action, fetching, items } = this.props.methodExamples
         return (
-            <div>
-                <h3 className="introduction">Given: {fetching && " Loading..."}</h3>
-                <h1 className="introduction box-background-color">
-                    <code>{ items && items[0] && items[0]["ArrayOfNumbersExample1InputData"] } </code>
-                </h1>
-                <h2 className="introduction">I WANT AN OUTPUT THAT LOOKS LIKE THIS</h2>
-                <div>
-                    <p>{action}</p>
-                    <button onClick={this.handleRefreshClick}>Fetch MethodExamples</button>
-                    <OutputList items={items}/>
+            <div className="reactApp">
+                <div className="head">
+                    <h3 className="input-data-first-text">Given: {fetching && " Loading..."}</h3>
+                    <h1 className="input-data-value">
+                        <code className="ruby-code">{ items && items[0] && items[0]["ArrayOfNumbersExample1InputData"] } </code>
+                    </h1>
+                    <h2 className="input-data-target-text">I WANT AN OUTPUT THAT LOOKS LIKE THIS</h2>
                 </div>
+                <div className="status-fetch">
+                    <p className="status-fetch-message">{action}</p>
+                    <button className="status-fetch-button" onClick={this.handleRefreshClick}>Fetch MethodExamples</button>
+                </div>
+                <OutputList items={items}/>
             </div>)
     }
 }
