@@ -8,6 +8,7 @@ import { createLogger } from 'redux-logger'
 export const REQUEST_METHOD_EXAMPLES = 'REQUEST_METHOD_EXAMPLES'
 export const RECEIVE_METHOD_EXAMPLES_SUCCESS = 'RECEIVE_METHOD_EXAMPLES_SUCCESS'
 export const RECEIVE_METHOD_EXAMPLES_FAILURE = 'RECEIVE_METHOD_EXAMPLES_FAILURE'
+export const FILTER_BY_OUTPUT_TYPE = 'FILTER_BY_OUTPUT_TYPE'
 
 const methodExamplesReducer = (state = {fetching: false, action: "Never fetched", items: []}, action) => {
     switch(action.type){
@@ -25,9 +26,20 @@ const methodExamplesReducer = (state = {fetching: false, action: "Never fetched"
     }
 }
 
+const visibilityFilterReducer = (state = {ouputType: 'Any'}, action) => {
+    switch(action.type){
+        case FILTER_BY_OUTPUT_TYPE:
+            return {...state,
+               ouputType: action.payload}
+        default:
+            return state
+    }
+}
+
 const rootReducer = (state = {}, action) => {
     return {
-        methodExamples: methodExamplesReducer(state.methodExamples, action)
+        methodExamples: methodExamplesReducer(state.methodExamples, action),
+        visibilityFilter: visibilityFilterReducer(state.visibilityFilter, action)
     }
 
 }
