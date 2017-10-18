@@ -67,7 +67,7 @@ const OutputList = (props) => (
     <main className="output-data-items">
         {props.items.map((item, i) =>
             <ul key={i} className="output-data-item">
-                <li className="output-data-value"> <code className="ruby-code"> { item.ArrayOfNumbersExample1OutputData } </code> </li>
+                <li className="output-data-value"> <pre className="ruby-code"> { item.ArrayOfNumbersExample1OutputData } </pre> </li>
                 <li className="output-data-explanation"> { item.ArrayOfNumbersExample1Explanation } </li>
             </ul>
         )}
@@ -105,6 +105,9 @@ class Ui extends Component {
                     <button className="status-fetch-button" onClick={this.handleRefreshClick}>Fetch MethodExamples</button>
                 </div>
                 <OutputList items={items}/>
+                <aside className="filter">
+                    <h3 className="filter-header">Filter Section</h3>
+                </aside>
             </div>)
     }
 }
