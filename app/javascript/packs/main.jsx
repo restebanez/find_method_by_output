@@ -9,22 +9,27 @@ export const REQUEST_METHOD_EXAMPLES = 'REQUEST_METHOD_EXAMPLES'
 export const RECEIVE_METHOD_EXAMPLES_SUCCESS = 'RECEIVE_METHOD_EXAMPLES_SUCCESS'
 export const RECEIVE_METHOD_EXAMPLES_FAILURE = 'RECEIVE_METHOD_EXAMPLES_FAILURE'
 
-const rootReducer = (state = {methodExamples: {fetching: false, action: "Never fetched", items: []}}, action) => {
+const methodExamplesReducer = (state = {fetching: false, action: "Never fetched", items: []}, action) => {
     switch(action.type){
         case REQUEST_METHOD_EXAMPLES:
-            return {...state,
-                methodExamples: {...state.methodExamples,
-                    action: "Fetching Method Examples...",
-                    fetching: true}}
+            return  { ...state,
+                action: "Fetching Method Examples...",
+                fetching: true }
         case RECEIVE_METHOD_EXAMPLES_SUCCESS:
-            return {...state,
-                methodExamples: {...state.methodExamples,
-                    action: "Method Examples fetched",
-                    items: action.items,
-                    fetching: false}}
+            return { ...state,
+                action: "Method Examples fetched",
+                items: action.items,
+                fetching: false }
         default:
             return state
     }
+}
+
+const rootReducer = (state = {}, action) => {
+    return {
+        methodExamples: methodExamplesReducer(state.methodExamples, action)
+    }
+
 }
 
 const loggerMiddleware = createLogger()
