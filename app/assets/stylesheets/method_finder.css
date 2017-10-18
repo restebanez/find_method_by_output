@@ -20,7 +20,7 @@
 
 .ruby-code {
     letter-spacing: 2px;
-    background: #ad9fca;
+    background: rgba(49, 101, 80, 0.74);
     color: white;
     padding: 3px;
 }
@@ -28,29 +28,29 @@
 .output-data-items {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0;
     margin: 0;
 }
 
 .output-data-item {
-    background: #EEE;
-    padding: 1px;
+    list-style: none;
+    padding: 5px;
     margin-top: 1px;
     margin-left: 5px;
 
-    text-align: center;
-
+    border: 1px solid black;
     display: flex;
     flex-flow: column;
-    list-style: none;
 }
 
 .output-data-item > * {
-    padding: 5px;
+    padding: 1px;
+    margin: auto;
 }
 
 .output-data-explanation {
+
 }
 
 .filter-header {
