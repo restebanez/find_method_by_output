@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import OutputList from './components/OutputList';
+import VisibleOutputList from './containers/VisibleOutputList'
 import { Provider,connect } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -117,7 +118,7 @@ class Ui extends Component {
                     <p className="status-fetch-message">{action}</p>
                     <button className="status-fetch-button" onClick={this.handleRefreshClick}>Fetch MethodExamples</button>
                 </div>
-                <OutputList items={items}/>
+                <VisibleOutputList />
                 <aside className="filter">
                     <h3 className="filter-header">Filter Section</h3>
                 </aside>
