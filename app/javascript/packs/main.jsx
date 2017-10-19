@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import OutputList from './components/OutputList';
 import { Provider,connect } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
@@ -80,16 +81,7 @@ function fetchMethodExamples(){
     }
 }
 
-const OutputList = (props) => (
-    <main className="output-data-items">
-        {props.items.map((item, i) =>
-            <ul key={i} className="output-data-item">
-                <li className="output-data-value"> <pre className="ruby-code"> { item.ArrayOfNumbersExample1OutputData } </pre> </li>
-                <li className="output-data-explanation"> { item.ArrayOfNumbersExample1Explanation } </li>
-            </ul>
-        )}
-    </main>
-)
+
 
 class Ui extends Component {
     constructor(props) {
