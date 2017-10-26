@@ -5,6 +5,8 @@ const getVisibleMethodExamples = (items, filter) => {
     switch(filter.ouputType) {
         case 'Any':
             return items
+        default:
+            return items
 
     }
 }
