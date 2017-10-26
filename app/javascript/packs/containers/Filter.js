@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import FilterByOuputType from '../components/FilterByOuputType'
+import FilterByoutputType from '../components/FilterByoutputType'
 import { toggleOutputTypeFilter } from '../actions'
 
 const getFilters = (outputTypes) => {
@@ -24,5 +24,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Filter = connect(mapStateToProps, mapDispatchToProps)(FilterByOuputType)
+const Filter = connect(mapStateToProps, mapDispatchToProps)(FilterByoutputType)
 export default Filter

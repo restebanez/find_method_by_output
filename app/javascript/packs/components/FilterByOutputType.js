@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FilterByOuputType = ({queryCollection, queryElement, subCollection, transformCollection, transformElements, onFilterClick}) => (
+const FilterByoutputType = ({queryCollection, queryElement, subCollection, transformCollection, transformElements, onFilterClick}) => (
     <fieldset>
         <legend>By Output Type</legend>
         <div>
@@ -30,4 +30,4 @@ const FilterByOuputType = ({queryCollection, queryElement, subCollection, transf
         </div>
     </fieldset>)
 
-export default FilterByOuputType
+export default FilterByoutputType

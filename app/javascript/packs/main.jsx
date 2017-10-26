@@ -11,7 +11,7 @@ import { createLogger } from 'redux-logger'
 export const REQUEST_METHOD_EXAMPLES = 'REQUEST_METHOD_EXAMPLES'
 export const RECEIVE_METHOD_EXAMPLES_SUCCESS = 'RECEIVE_METHOD_EXAMPLES_SUCCESS'
 export const RECEIVE_METHOD_EXAMPLES_FAILURE = 'RECEIVE_METHOD_EXAMPLES_FAILURE'
-export const TOGGLE_OUPUT_TYPE_FILTER = 'TOGGLE_OUPUT_TYPE_FILTER'
+export const TOGGLE_OUTPUT_TYPE_FILTER = 'TOGGLE_OUTPUT_TYPE_FILTER'
 
 
 const methodExamplesReducer = (state = {fetching: false, action: "Never fetched", items: []}, action) => {
@@ -34,7 +34,7 @@ const methodExamplesReducer = (state = {fetching: false, action: "Never fetched"
 
 const visibilityFilterReducer = (state = {outputTypes: []}, action) => {
     switch(action.type){
-        case TOGGLE_OUPUT_TYPE_FILTER:
+        case TOGGLE_OUTPUT_TYPE_FILTER:
             const index = state.outputTypes.indexOf(action.filterName)
             if (index === -1){
                 return {
