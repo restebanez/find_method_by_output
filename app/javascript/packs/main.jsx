@@ -11,7 +11,8 @@ import { createLogger } from 'redux-logger'
 export const REQUEST_METHOD_EXAMPLES = 'REQUEST_METHOD_EXAMPLES'
 export const RECEIVE_METHOD_EXAMPLES_SUCCESS = 'RECEIVE_METHOD_EXAMPLES_SUCCESS'
 export const RECEIVE_METHOD_EXAMPLES_FAILURE = 'RECEIVE_METHOD_EXAMPLES_FAILURE'
-export const FILTER_BY_OUTPUT_TYPE = 'FILTER_BY_OUTPUT_TYPE'
+export const ADD_FILTER_BY_OUTPUT_TYPE = 'ADD_FILTER_BY_OUTPUT_TYPE'
+export const REMOVE_FILTER_BY_OUTPUT_TYPE = 'REMOVE_FILTER_BY_OUTPUT_TYPE'
 
 const methodExamplesReducer = (state = {fetching: false, action: "Never fetched", items: []}, action) => {
     switch(action.type){
@@ -29,11 +30,20 @@ const methodExamplesReducer = (state = {fetching: false, action: "Never fetched"
     }
 }
 
-const visibilityFilterReducer = (state = {ouputType: 'Any'}, action) => {
+const visibilityFilterReducer = (state = {ouputTypes: []}, action) => {
     switch(action.type){
-        case FILTER_BY_OUTPUT_TYPE:
+        case ADD_FILTER_BY_OUTPUT_TYPE:
+            if (state.outputTypes.includes(action.payload)){
+                return state
+            } else {
+                return {...state,
+                    ouputTypes: [...state.outputTypes, action.payload]}
+            }
+
+        case REMOVE_FILTER_BY_OUTPUT_TYPE:
             return {...state,
-               ouputType: action.payload}
+                ouputTypes: [...state.outputTypes.slice(0, action.index),
+                             ...state.outputTypes.slice(action.index + 1)]}
         default:
             return state
     }
