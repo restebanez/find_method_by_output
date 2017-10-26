@@ -2,7 +2,7 @@ import React from 'react'
 
 const FilterByoutputType = ({queryCollection, queryElement, subCollection, transformCollection, transformElements, onFilterClick}) => (
     <fieldset>
-        <legend>By Output Type</legend>
+        <legend>Showing this Output Types</legend>
         <div>
             <input type="checkbox" id="queryCollection" name="outputType" value="QueryCollection"
                    checked={queryCollection} onClick={() => onFilterClick("QueryCollection")} />

@@ -133,7 +133,6 @@ class Ui extends Component {
                 </div>
                 <VisibleOutputList />
                 <aside className="filter">
-                    <h3 className="filter-header">Filter Section</h3>
                     <Filter />
                 </aside>
             </div>)
