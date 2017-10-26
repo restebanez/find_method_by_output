@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import FilterByOuputType from './components/FilterByOuputType';
+import Filter from './containers/Filter';
 import VisibleOutputList from './containers/VisibleOutputList'
 import { Provider,connect } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -11,8 +11,8 @@ import { createLogger } from 'redux-logger'
 export const REQUEST_METHOD_EXAMPLES = 'REQUEST_METHOD_EXAMPLES'
 export const RECEIVE_METHOD_EXAMPLES_SUCCESS = 'RECEIVE_METHOD_EXAMPLES_SUCCESS'
 export const RECEIVE_METHOD_EXAMPLES_FAILURE = 'RECEIVE_METHOD_EXAMPLES_FAILURE'
-export const ADD_FILTER_BY_OUTPUT_TYPE = 'ADD_FILTER_BY_OUTPUT_TYPE'
-export const REMOVE_FILTER_BY_OUTPUT_TYPE = 'REMOVE_FILTER_BY_OUTPUT_TYPE'
+export const TOGGLE_OUPUT_TYPE_FILTER = 'TOGGLE_OUPUT_TYPE_FILTER'
+
 
 const methodExamplesReducer = (state = {fetching: false, action: "Never fetched", items: []}, action) => {
     switch(action.type){
@@ -30,20 +30,23 @@ const methodExamplesReducer = (state = {fetching: false, action: "Never fetched"
     }
 }
 
-const visibilityFilterReducer = (state = {ouputTypes: []}, action) => {
+
+
+const visibilityFilterReducer = (state = {outputTypes: []}, action) => {
     switch(action.type){
-        case ADD_FILTER_BY_OUTPUT_TYPE:
-            if (state.outputTypes.includes(action.payload)){
-                return state
+        case TOGGLE_OUPUT_TYPE_FILTER:
+            const index = state.outputTypes.indexOf(action.filterName)
+            if (index === -1){
+                return {
+                    ...state,
+                    outputTypes: [...state.outputTypes, action.filterName]}
             } else {
-                return {...state,
-                    ouputTypes: [...state.outputTypes, action.payload]}
+                return {
+                    ...state,
+                    outputTypes: [...state.outputTypes.slice(0, index),
+                                 ...state.outputTypes.slice(index + 1)]}
             }
 
-        case REMOVE_FILTER_BY_OUTPUT_TYPE:
-            return {...state,
-                ouputTypes: [...state.outputTypes.slice(0, action.index),
-                             ...state.outputTypes.slice(action.index + 1)]}
         default:
             return state
     }
@@ -131,7 +134,7 @@ class Ui extends Component {
                 <VisibleOutputList />
                 <aside className="filter">
                     <h3 className="filter-header">Filter Section</h3>
-                    <FilterByOuputType />
+                    <Filter />
                 </aside>
             </div>)
     }
