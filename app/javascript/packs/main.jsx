@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import OutputList from './components/OutputList';
+import FilterByOuputType from './components/FilterByOuputType';
 import VisibleOutputList from './containers/VisibleOutputList'
 import { Provider,connect } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -131,6 +131,7 @@ class Ui extends Component {
                 <VisibleOutputList />
                 <aside className="filter">
                     <h3 className="filter-header">Filter Section</h3>
+                    <FilterByOuputType />
                 </aside>
             </div>)
     }
