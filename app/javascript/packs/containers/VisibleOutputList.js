@@ -2,13 +2,8 @@ import OutputList from '../components/OutputList'
 import { connect } from 'react-redux'
 
 const getVisibleMethodExamples = (items, filter) => {
-    switch(filter.outputType) {
-        case 'Any':
-            return items
-        default:
-            return items
 
-    }
+    return items.filter(item => !filter.outputTypes.includes(item.outputType))
 }
 
 const mapStateToProps = state => {

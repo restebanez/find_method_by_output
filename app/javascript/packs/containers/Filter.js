@@ -4,11 +4,11 @@ import { toggleOutputTypeFilter } from '../actions'
 
 const getFilters = (outputTypes) => {
     return {
-        queryCollection: outputTypes.includes('QueryCollection'),
-        queryElement: outputTypes.includes('QueryElement'),
-        subCollection: outputTypes.includes('SubCollection'),
-        transformCollection: outputTypes.includes('TransformCollection'),
-        transformElements: outputTypes.includes('TransformElements')
+        queryCollection: !outputTypes.includes('QueryCollection'),
+        queryElement: !outputTypes.includes('QueryElement'),
+        subCollection: !outputTypes.includes('SubCollection'),
+        transformCollection: !outputTypes.includes('TransformCollection'),
+        transformElements: !outputTypes.includes('TransformElements')
     }
 }
 
